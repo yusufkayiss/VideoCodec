@@ -10,6 +10,7 @@ public sealed class FfmpegService
 {
     private static readonly HttpClient Http = new();
 
+    // Bu metot, arka planda görünmez bir komut satırı açarak FFmpeg video motorunun sistemde yüklü ve çalışmaya hazır olup olmadığını test eder.
     public bool IsFfmpegAvailable()
     {
         try
