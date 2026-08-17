@@ -195,6 +195,7 @@ public sealed class FfmpegService
         }
     }
 
+    // Bu metot, FFmpeg konsol çıktısındaki zaman bilgisini Regex ile okuyarak yüzde cinsinden ilerleme oranını hesaplar.
     private static void UpdateProgress(TimeSpan totalDuration, string ffmpegLogLine, Action<int> onProgress)
     {
         if (totalDuration <= TimeSpan.Zero)
@@ -217,6 +218,7 @@ public sealed class FfmpegService
         onProgress(percent);
     }
 
+    // 
     private static async Task DownloadFileWithProgressAsync(
         string url,
         string targetPath,
