@@ -5,8 +5,10 @@ using VideoCodec.Models;
 
 namespace VideoCodec.Services;
 
+
 public static class MediaInfoParser
 {
+    // Bu metot, FFmpeg konsol çıktısındaki ham metin verisini Regex kullanarak analiz eder ve video/ses metadata bilgilerini ayrıştırır.
     public static MediaInfoResult Parse(string ffmpegOutput)
     {
         var durationText = "N/A";
@@ -58,6 +60,7 @@ public static class MediaInfoParser
         };
     }
 
+    // Bu metot, ayrıştırılan medya bilgilerini ve dosya boyutunu kullanıcı arayüzünde gösterilmek üzere okunabilir bir metin formatına dönüştürür.
     public static string BuildDisplayText(string inputPath, MediaInfoResult result)
     {
         var sb = new StringBuilder();
