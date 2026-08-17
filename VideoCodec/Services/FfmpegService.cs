@@ -218,7 +218,7 @@ public sealed class FfmpegService
         onProgress(percent);
     }
 
-    // 
+    // Bu metot, belirtilen URL'deki dosyayı arabelleğe alarak indirir ve indirme yüzdesini canlı olarak bildirir.
     private static async Task DownloadFileWithProgressAsync(
         string url,
         string targetPath,
