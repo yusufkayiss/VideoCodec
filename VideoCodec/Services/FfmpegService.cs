@@ -255,6 +255,7 @@ public sealed class FfmpegService
         }
     }
 
+    // Bu metot, FFmpeg çalıştırılabilir dosyasının sistemdeki yerini varsayılan dizinlerde arayarak tespit eder.
     private static string ResolveFfmpegPath()
     {
         var local = Path.Combine(AppContext.BaseDirectory, "ffmpeg.exe");
@@ -272,6 +273,7 @@ public sealed class FfmpegService
         return "ffmpeg";
     }
 
+    // 
     private static void TryDeleteFile(string filePath)
     {
         try
