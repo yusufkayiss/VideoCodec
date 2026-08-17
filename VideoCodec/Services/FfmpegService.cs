@@ -273,7 +273,7 @@ public sealed class FfmpegService
         return "ffmpeg";
     }
 
-    // 
+    // Bu metot, belirtilen dosyayı güvenli bir şekilde silmeye çalışır; silme sırasında hata oluşursa süreci aksatmaz.
     private static void TryDeleteFile(string filePath)
     {
         try
