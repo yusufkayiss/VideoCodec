@@ -39,6 +39,7 @@ public sealed class FfmpegService
         }
     }
 
+    // Bu metot, verilen medya dosyasını FFmpeg ile analiz ederek süre, çözünürlük ve kodek bilgilerini asenkron olarak okur.
     public async Task<MediaInfoResult> ProbeMediaAsync(string inputFile, CancellationToken cancellationToken)
     {
         var ffmpegExe = ResolveFfmpegPath();
