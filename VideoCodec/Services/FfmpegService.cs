@@ -76,6 +76,7 @@ public sealed class FfmpegService
         return MediaInfoParser.Parse(stderr);
     }
 
+    // Bu metot, verilen FFmpeg parametreleriyle dönüştürme işlemini başlatır ve ilerleme durumunu asenkron olarak bildirir.
     public async Task RunAsync(
         string args,
         TimeSpan totalDuration,
