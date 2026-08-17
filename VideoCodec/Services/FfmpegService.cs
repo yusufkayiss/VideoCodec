@@ -131,6 +131,7 @@ public sealed class FfmpegService
         }
     }
 
+    // Bu metot, FFmpeg bağımlılığını internetten otomatik indirir, arşivden çıkarır ve proje dizinine kurar.
     public async Task DownloadAndInstallFfmpegAsync(
         CancellationToken cancellationToken,
         Action<string> setStatus,
