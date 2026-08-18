@@ -4,6 +4,7 @@ namespace VideoCodec
 {
     public partial class Form1
     {
+        // Form bileşenlerine sürükle-bırak olaylarını bağlayarak kullanıcının doğrudan video dosyası bırakabilmesini sağlar.
         private void InitializeDragDrop()
         {
             AllowDrop = true;
@@ -53,6 +54,7 @@ namespace VideoCodec
             return ext is ".mp4" or ".avi" or ".mkv" or ".mov" or ".webm" or ".flv";
         }
 
+        // Arayüz elemanlarına karanlık tema renklerini ve GDI+ ile yuvarlatılmış köşe stillerini uygular.
         private void ApplyModernStyling()
         {
             StyleCard(panelSource);
