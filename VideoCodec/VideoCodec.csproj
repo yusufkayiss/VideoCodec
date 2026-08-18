@@ -9,8 +9,5 @@
   </PropertyGroup>
 
   <!-- Form1.resx ile aynı manifest adına düşüyordu; publish (win-x64) MSB3577 veriyordu. -->
-  <ItemGroup>
-    <EmbeddedResource Remove="Form1.Presentation.resx" />
-  </ItemGroup>
 
 </Project>
