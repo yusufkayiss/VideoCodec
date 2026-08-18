@@ -31,6 +31,7 @@ namespace VideoCodec
             ApplyModernStyling();
         }
 
+        // Arayüzdeki varsayılan seçenekleri (codec, çözünürlük, FPS vb.) ve varsayılan çıktı klasörünü hazırlar.
         private void InitializeDefaults()
         {
             cmbFormat.Items.AddRange(["mp4", "avi", "mkv", "mov", "webm", "flv"]);
@@ -93,6 +94,7 @@ namespace VideoCodec
             txtOutputName.Text = Path.GetFileNameWithoutExtension(_inputVideoPath) + "_dönüştürülen";
         }
 
+        // Video dönüştürme sürecini tetikler; seçilen ayarlara göre FFmpeg komutunu oluşturup işlemi çalıştırır.
         private async void btnConvert_Click(object sender, EventArgs e)
         {
             if (!ValidateInput())
@@ -192,6 +194,7 @@ namespace VideoCodec
                 });
         }
 
+        // İşlem başlatılmadan önce kaynak video, çıktı klasörü ve dosya adı bilgilerinin eksiksiz olduğunu doğrular.
         private bool ValidateInput()
         {
             if (string.IsNullOrWhiteSpace(_inputVideoPath) || !File.Exists(_inputVideoPath))
@@ -268,6 +271,7 @@ namespace VideoCodec
                 cancellationToken);
         }
 
+        // Seçilen videonun yolunu alır, medya bilgilerini asenkron olarak ayrıştırır ve arayüzü işleme hazırlar.
         private async Task LoadInputVideoAsync(string path)
         {
             ToggleBusyUi(true);
@@ -300,6 +304,7 @@ namespace VideoCodec
             }
         }
 
+        // Sistemde FFmpeg yoksa kullanıcıdan onay alarak otomatik indirme ve kurulum sürecini başlatır.
         private async Task EnsureFfmpegInstalledAsync(CancellationToken cancellationToken)
         {
             if (_ffmpegService.IsFfmpegAvailable())
@@ -341,6 +346,7 @@ namespace VideoCodec
             }
         }
 
+        // Asenkron işlemleri güvenli şekilde çalıştırır; UI kilitleme, iptal (cancellation) ve hata yönetimini ele alır.
         private async Task ExecuteOperationAsync(
             string startStatus,
             string cancelledStatus,
@@ -389,6 +395,7 @@ namespace VideoCodec
             lblStatus.Text = status;
         }
 
+        // Arka plan iş parçacıklarından gelen ilerleme bilgisini arayüze thread-safe (güvenli) şekilde aktarır.
         private void SetProgressSafe(int value)
         {
             value = Math.Clamp(value, 0, 100);
