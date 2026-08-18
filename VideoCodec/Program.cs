@@ -20,4 +20,4 @@ namespace VideoCodec
             Application.Run(new Form1());
         }
     }
-}s
+}
