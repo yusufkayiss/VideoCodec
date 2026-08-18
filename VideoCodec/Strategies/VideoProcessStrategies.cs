@@ -3,12 +3,14 @@ using VideoCodec.Models;
 
 namespace VideoCodec.Strategies;
 
+// Bu arayüz, video dönüştürme, ses ayırma ve ses değiştirme gibi farklı FFmpeg işlem stratejilerinin uyması gereken temel sözleşmeyi tanımlar.
 public interface IVideoProcessStrategy
 {
     string Name { get; }
     string BuildArguments(VideoProcessRequest request);
 }
 
+// Video dönüştürme işlemi için codec, bitrate, çözünürlük ve FPS parametrelerini birleştirerek tam FFmpeg komut satırını oluşturur.
 public sealed class ConvertVideoStrategy : IVideoProcessStrategy
 {
     public string Name => "VideoDönüştür";
@@ -60,6 +62,7 @@ public sealed class ConvertVideoStrategy : IVideoProcessStrategy
     };
 }
 
+// Videodan görüntü kanalını tamamen çıkarıp (-vn) sadece sesi istenen formatta dışa aktaran FFmpeg komutunu oluşturur.
 public sealed class ExtractAudioStrategy : IVideoProcessStrategy
 {
     public string Name => "SesAyır";
@@ -71,6 +74,7 @@ public sealed class ExtractAudioStrategy : IVideoProcessStrategy
     }
 }
 
+// Mevcut videonun sesini harici bir ses dosyasıyla değiştiren (-map 0:v:0 -map 1:a:0) FFmpeg komutunu oluşturur.
 public sealed class ReplaceAudioStrategy : IVideoProcessStrategy
 {
     public string Name => "SesDeğiştir";
@@ -87,6 +91,7 @@ public sealed class ReplaceAudioStrategy : IVideoProcessStrategy
     }
 }
 
+// Kullanıcının arayüzde seçtiği işlem türüne göre ("VideoDönüştür", "SesAyır", "SesDeğiştir") ilgili işlem stratejisini getiren fabrika sınıfı.
 public static class VideoProcessStrategyFactory
 {
     private static readonly IReadOnlyDictionary<string, IVideoProcessStrategy> Strategies = new Dictionary<string, IVideoProcessStrategy>(StringComparer.OrdinalIgnoreCase)
