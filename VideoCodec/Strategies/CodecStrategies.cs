@@ -1,5 +1,6 @@
 namespace VideoCodec.Strategies;
 
+// Tüm video ve ses codec stratejilerinin türediği ve FFmpeg parametrelerini tanımlayan temel arayüz.
 public interface ICodecStrategy
 {
     string Name { get; }
@@ -63,6 +64,7 @@ public sealed class WavStrategy : ICodecStrategy
     public string ExtraArguments => string.Empty;
 }
 
+// Kullanıcı arayüzünden seçilen video codec adına göre uygun video strateji nesnesini üreten fabrika sınıfı.
 public static class VideoCodecStrategyFactory
 {
     private static readonly IReadOnlyDictionary<string, ICodecStrategy> Strategies = new Dictionary<string, ICodecStrategy>(StringComparer.OrdinalIgnoreCase)
@@ -86,6 +88,7 @@ public static class VideoCodecStrategyFactory
     }
 }
 
+// Kullanıcı arayüzünden seçilen ses codec adına göre uygun ses strateji nesnesini üreten fabrika sınıfı.
 public static class AudioCodecStrategyFactory
 {
     private static readonly IReadOnlyDictionary<string, ICodecStrategy> Strategies = new Dictionary<string, ICodecStrategy>(StringComparer.OrdinalIgnoreCase)
