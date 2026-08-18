@@ -1,5 +1,6 @@
 namespace VideoCodec.Models;
 
+// FFmpeg tarafından ayrıştırılan medya metadata bilgilerini (süre, codec, çözünürlük vb.) arayüze taşımak için kullanılan veri modeli.
 public sealed class MediaInfoResult
 {
     public string DurationText { get; init; } = "N/A";

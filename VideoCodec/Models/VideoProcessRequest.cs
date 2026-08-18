@@ -1,5 +1,6 @@
 namespace VideoCodec.Models;
 
+// Kullanıcının arayüzden seçtiği tüm video ve ses işleme parametrelerini strateji katmanına taşımak için kullanılan veri modeli.
 public sealed class VideoProcessRequest
 {
     public string InputVideoPath { get; init; } = string.Empty;
