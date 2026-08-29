@@ -12,10 +12,11 @@ A high-performance core engine designed for video encoding, decoding, and format
 ### 🛠 Tech Stack
 - **Framework**: .NET 8 (C#)
 - **Architecture**: SOLID Principles, Clean Code
+- **Video Processing**: FFmpeg integration
 - **Processing**: Multi-threaded & Asynchronous Core Logic
 
 ### ✨ Key Features & Responsibilities
-- **High-Performance Processing**: Efficiently optimizes and converts raw or various video formats.
+- **High-Performance Processing**: Efficiently optimizes and converts raw or various video formats using FFmpeg.
 - **Decoupled Engine**: Completely isolated from APIs or message broker infrastructure, encapsulating pure business logic.
 - **Extensible Design**: Fully compliant with SOLID principles to easily integrate future video codecs (e.g., H.264, H.265).
 - **Core System Integration**: Handles heavy computational and algorithmic workloads, consumed directly by background Worker Services.
@@ -33,10 +34,11 @@ Dağıtık mimariler için tasarlanmış, video dönüştürme ve kodlama (encod
 ### 🛠 Teknolojiler
 - **Framework**: .NET 8 (C#)
 - **Mimari**: SOLID Prensipleri, Temiz Kod
+- **Video İşleme**: FFmpeg entegrasyonu
 - **İşlem Tipi**: Çok İzlekli (Multi-threaded) & Asenkron İş Mantığı
 
 ### ✨ Özellikler & Görevler
-- **Yüksek Performanslı İşleme**: Ham veya farklı formatlardaki video dosyalarını optimize ederek işler.
+- **Yüksek Performanslı İşleme**: FFmpeg gücünü kullanarak ham veya farklı formatlardaki video dosyalarını optimize ederek işler.
 - **Bağımsız Katman**: API veya kuyruk mekanizmalarından bağımsız, saf iş mantığı (Business Logic) ve algoritmaları barındırır.
 - **Genişletilebilir Yapı**: İleride farklı video codec bileşenleri (H.264, H.265 vb.) eklenebilecek şekilde temiz kod prensiplerine (SOLID) uygun tasarlanmıştır.
 - **Sistemdeki Rolü**: Ana sistemdeki Worker Service tarafından tüketilerek arka plandaki asenkron video sıkıştırma ve işleme süreçlerinin matematiksel/algoritmik yükünü sırtlanır.
