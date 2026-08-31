@@ -1,5 +1,7 @@
 # ⚙️ VideoCodec - Core Video Processing Engine (.NET 8)
 
+[![.NET Core Codec CI & Tests](https://github.com/yusufkayiss/VideoCodec/actions/workflows/dotnet.yml/badge.svg)](https://github.com/yusufkayiss/VideoCodec/actions/workflows/dotnet.yml)
+
 High-performance video encoding, decoding, and processing core library built with .NET 8.
 
 ---
