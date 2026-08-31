@@ -1,0 +1,28 @@
+name: .NET Core Codec CI & Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore Dependencies
+      run: dotnet restore VideoCodec/VideoCodec.csproj
+
+    - name: Build Project
+      run: dotnet build VideoCodec/VideoCodec.csproj --configuration Release --no-restore
+
+    - name: Run Unit Tests
+      run: dotnet test VideoCodec.Tests/VideoCodec.Tests.csproj --configuration Release --no-build --verbosity normal
