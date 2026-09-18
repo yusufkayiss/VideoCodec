@@ -23,6 +23,41 @@ A high-performance core engine designed for video encoding, decoding, and format
 - **Extensible Design**: Fully compliant with SOLID principles to easily integrate future video codecs (e.g., H.264, H.265).
 - **Core System Integration**: Handles heavy computational and algorithmic workloads, consumed directly by background Worker Services.
 
+### 📐 Architecture Flow
+
+```mermaid
+flowchart TD
+    Caller[Worker Service / Caller] -->|1. Pass File & Options| Codec[VideoCodec Engine]
+    Codec -->|2. Build FFmpeg Commands| Engine[FFmpeg Core]
+    Engine -->|3. Execute Multi-Threaded Encoding| Output[(Output Video File)]
+```
+
+### 💻 Quick Usage Example
+
+```csharp
+using VideoCodec;
+
+// Initialize the codec engine
+var codecEngine = new VideoCodecEngine();
+
+// Configure encoding parameters
+var options = new EncodingOptions
+{
+    InputPath = "input.mp4",
+    OutputPath = "output_compressed.mp4",
+    Resolution = VideoResolution.HD_1080p,
+    TargetBitrateKbps = 2500
+};
+
+// Execute processing asynchronously
+var result = await codecEngine.ProcessAsync(options);
+
+if (result.IsSuccess)
+{
+    Console.WriteLine($"Processing finished in {result.ElapsedTime.TotalSeconds}s");
+}
+```
+
 ### 🔗 System Architecture & Related Projects
 > 💡 **Note**: To see how this core engine integrates into a distributed asynchronous architecture using **RabbitMQ, Docker, and Worker Services**, visit the main project repository: [VideoProcessing Architecture](https://github.com/yusufkayiss/VideoProcessing).
 
@@ -44,6 +79,33 @@ Dağıtık mimariler için tasarlanmış, video dönüştürme ve kodlama (encod
 - **Bağımsız Katman**: API veya kuyruk mekanizmalarından bağımsız, saf iş mantığı (Business Logic) ve algoritmaları barındırır.
 - **Genişletilebilir Yapı**: İleride farklı video codec bileşenleri (H.264, H.265 vb.) eklenebilecek şekilde temiz kod prensiplerine (SOLID) uygun tasarlanmıştır.
 - **Sistemdeki Rolü**: Ana sistemdeki Worker Service tarafından tüketilerek arka plandaki asenkron video sıkıştırma ve işleme süreçlerinin matematiksel/algoritmik yükünü sırtlanır.
+
+### 📐 Mimari Akış
+
+```mermaid
+flowchart TD
+    Caller[Worker Service / Çağıran Servis] -->|1. Dosya ve Parametre Gönder| Codec[VideoCodec Engine]
+    Codec -->|2. FFmpeg Komutlarını Oluştur| Engine[FFmpeg Motoru]
+    Engine -->|3. Çok İzlekli Kodlama| Output[(İşlenmiş Video Dosyası)]
+```
+
+### 💡 Hızlı Kullanım Örneği
+
+```csharp
+using VideoCodec;
+
+var codecEngine = new VideoCodecEngine();
+
+var options = new EncodingOptions
+{
+    InputPath = "girdi.mp4",
+    OutputPath = "cikti_sikitirilmis.mp4",
+    Resolution = VideoResolution.HD_1080p,
+    TargetBitrateKbps = 2500
+};
+
+var result = await codecEngine.ProcessAsync(options);
+```
 
 ### 🔗 Ana Sistem & Mimari
 > 💡 **Not**: Bu motorun RabbitMQ, Docker ve Worker Service kullanılarak asenkron bir mimariyle nasıl entegre edildiğini görmek için ana proje olan [VideoProcessing Asenkron Mimarisi](https://github.com/yusufkayiss/VideoProcessing) reposuna göz atabilirsiniz.
